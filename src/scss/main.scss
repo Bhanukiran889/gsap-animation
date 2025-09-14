@@ -1,0 +1,23 @@
+@import "variables";
+@import "animations";
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  background: #fff;
+  color: #222;
+}
+
+.sticky-container {
+  position: relative;
+  height: 400vh; // 4x viewport for scroll area
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
