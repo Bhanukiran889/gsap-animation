@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../scss/_extensions.scss";
+import "../scss/_Extensions.scss";
 import "../scss/_tabs.scss";
 import "../scss/_features.scss";
 
