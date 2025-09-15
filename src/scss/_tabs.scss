@@ -1,0 +1,44 @@
+.tabs-mockup {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+
+  .tab {
+    width: 120px;
+    height: 50px;
+    border-radius: 8px 8px 0 0;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform: translateY(100px);
+    opacity: 0;
+
+    &.red {
+      background: linear-gradient(135deg, #e57373, #f44336);
+      color: white;
+    }
+    &.blue {
+      background: linear-gradient(135deg, #64b5f6, #2196f3);
+      color: white;
+    }
+    &.green {
+      background: linear-gradient(135deg, #81c784, #4caf50);
+      color: white;
+    }
+    &.yellow {
+      background: linear-gradient(135deg, #fff176, #fbc02d);
+      color: #222;
+    }
+  }
+}
+
+.scene-3-bg {
+  background: linear-gradient(120deg, #f8f9fa, #e3f2fd);
+  transition: background 1s ease;
+}

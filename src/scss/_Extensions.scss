@@ -1,0 +1,43 @@
+.extensions-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4285f4, #34a853);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0.8);
+
+    &.circle {
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ea4335, #fbbc05);
+    }
+
+    &.triangle {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-bottom: 60px solid #34a853;
+      background: none;
+    }
+
+    &.diamond {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #fbbc05, #4285f4);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.scene-2-bg {
+  background: linear-gradient(120deg, #f1f1f1, #fafafa);
+  transition: background 1s ease;
+}

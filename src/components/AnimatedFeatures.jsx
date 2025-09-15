@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "../scss/extensions.scss";
-import "../scss/tabs.scss";
+import "../scss/_extensions.scss";
+import "../scss/_tabs.scss";
+import "../scss/_features.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,8 @@ export default function AnimatedFeatures() {
 
   const bgRef = useRef(null);
   const iconsRef = useRef([]);
-  const tabGroupsRef = useRef([]);
+  const tabsRef = useRef([]);
+  const featuresRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,10 +38,7 @@ export default function AnimatedFeatures() {
 
       // Scene 2
       tl.fromTo(scene2Ref.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
-      tl.to(bgRef.current, {
-        background: "linear-gradient(120deg, #e0f7fa, #80deea)",
-        duration: 1,
-      }, "<");
+      tl.to(bgRef.current, { background: "linear-gradient(120deg, #e0f7fa, #80deea)", duration: 1 }, "<");
       tl.fromTo(
         iconsRef.current,
         { y: 100, opacity: 0, scale: 0.5, rotate: -45 },
@@ -48,21 +47,28 @@ export default function AnimatedFeatures() {
       );
       tl.to(scene2Ref.current, { opacity: 0, y: -50, duration: 1 });
 
-      // Scene 3 - Tab Groups
+      // Scene 3
       tl.fromTo(scene3Ref.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
-
-      // Animate tab groups
-      tl.fromTo(
-        tabGroupsRef.current,
-        { x: -100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 1, stagger: 0.3, ease: "power3.out" },
+      tl.to(bgRef.current, { background: "linear-gradient(120deg, #ede7f6, #d1c4e9)", duration: 1 }, "<");
+      tl.to(
+        tabsRef.current,
+        { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: "back.out(1.7)" },
         "<+0.3"
       );
-
+      tl.to(tabsRef.current, { x: (i) => i * -20, duration: 1, ease: "power2.inOut" }, "+=0.5");
       tl.to(scene3Ref.current, { opacity: 0, y: -50, duration: 1 });
 
       // Scene 4
       tl.fromTo(scene4Ref.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1 });
+      tl.to(bgRef.current, { background: "linear-gradient(120deg, #e8f5e9, #c8e6c9)", duration: 1 }, "<");
+      tl.fromTo(
+        featuresRef.current,
+        { opacity: 0, scale: 0.5, y: 50 },
+        { opacity: 1, scale: 1, y: 0, duration: 1, stagger: 0.3, ease: "elastic.out(1, 0.5)" },
+        "<+0.3"
+      );
+      // Pulse effect
+      tl.to(featuresRef.current, { scale: 1.1, repeat: 1, yoyo: true, duration: 0.5 }, "+=0.5");
     }, containerRef);
 
     return () => ctx.revert();
@@ -92,41 +98,23 @@ export default function AnimatedFeatures() {
         {/* Scene 3 */}
         <div className="scene" ref={scene3Ref}>
           <h2>Take control of your tabs</h2>
-          <p>Organize tabs into color-coded groups</p>
-          <div className="tab-groups">
-            <div className="tab-group blue" ref={(el) => (tabGroupsRef.current[0] = el)}>
-              <span className="group-label">Project Alpha</span>
-              <div className="tab"></div>
-              <div className="tab"></div>
-              <div className="tab"></div>
-            </div>
-
-            <div className="tab-group green" ref={(el) => (tabGroupsRef.current[1] = el)}>
-              <span className="group-label">Portfolio</span>
-              <div className="tab"></div>
-              <div className="tab"></div>
-            </div>
-
-            <div className="tab-group yellow" ref={(el) => (tabGroupsRef.current[2] = el)}>
-              <span className="group-label">Research</span>
-              <div className="tab"></div>
-              <div className="tab"></div>
-              <div className="tab"></div>
-              <div className="tab"></div>
-            </div>
-
-            <div className="tab-group red" ref={(el) => (tabGroupsRef.current[3] = el)}>
-              <span className="group-label">Work</span>
-              <div className="tab"></div>
-              <div className="tab"></div>
-            </div>
+          <p>Tab group mockup goes here</p>
+          <div className="tabs-mockup">
+            <div className="tab red" ref={(el) => (tabsRef.current[0] = el)}>Work</div>
+            <div className="tab blue" ref={(el) => (tabsRef.current[1] = el)}>Social</div>
+            <div className="tab green" ref={(el) => (tabsRef.current[2] = el)}>Projects</div>
+            <div className="tab yellow" ref={(el) => (tabsRef.current[3] = el)}>Shopping</div>
           </div>
         </div>
 
         {/* Scene 4 */}
         <div className="scene" ref={scene4Ref}>
           <h2>Helpful features built-in</h2>
-          <p>Password manager / Safety check UI elements go here</p>
+          <p>Password manager / Safety check</p>
+          <div className="features-icons">
+            <div className="icon lock" ref={(el) => (featuresRef.current[0] = el)}></div>
+            <div className="icon shield" ref={(el) => (featuresRef.current[1] = el)}></div>
+          </div>
         </div>
       </div>
     </div>
